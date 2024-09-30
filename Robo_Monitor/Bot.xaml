@@ -1,0 +1,44 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="JornadaRPA.Bot" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="JornadaRPAStudio.Workflow_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:jff="clr-namespace:JornadaRPA.FilesAndFolders.File_Handler;assembly=JornadaRPA.FilesAndFolders"
+ xmlns:jfm="clr-namespace:JornadaRPA.FilesAndFolders.Monitor_Files_Folders;assembly=JornadaRPA.FilesAndFolders"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <jfm:Monitor_Files_Folders sap2010:WorkflowViewState.IdRef="Monitor_Files_Folders_1" looping="True" observerEvent="on_created" path="&quot;C:\Users\HP\Downloads\Identidades\Recebidos&quot;" recursive="False" waiting="2">
+      <jfm:Monitor_Files_Folders.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <jff:File_Handler sap2010:WorkflowViewState.IdRef="File_Handler_1" file_final="&quot;C:\Users\HP\Downloads\Identidades\Concluidos&quot;" file_original="pathFile" operation="Move" />
+          </Sequence>
+        </ActivityAction>
+      </jfm:Monitor_Files_Folders.Body>
+    </jfm:Monitor_Files_Folders>
+    <sads:DebugSymbol.Symbol>dyRDOlxSUEFcYm90Y2l0eVxSb2JvX01vbml0b3JcQm90LnhhbWwCCwMWDgIBAQwFFCECAQI=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="File_Handler_1" sap:VirtualizedContainerService.HintSize="324,78" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="346,202">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Monitor_Files_Folders_1" sap:VirtualizedContainerService.HintSize="400,320" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="422,444">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="JornadaRPAStudio.Workflow_1" sap:VirtualizedContainerService.HintSize="462,524" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
