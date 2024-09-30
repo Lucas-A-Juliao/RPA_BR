@@ -1,0 +1,33 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="JornadaRPA.Bot" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="JornadaRPAStudio.Workflow_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:jpp="clr-namespace:JornadaRPA.Python.Print;assembly=JornadaRPA.Python"
+ xmlns:jwe="clr-namespace:JornadaRPA.Web.ExtractDataTable;assembly=JornadaRPA.Web"
+ xmlns:jwo="clr-namespace:JornadaRPA.Web.OpenBrowser;assembly=JornadaRPA.Web"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Sequence DisplayName="WebScrap" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <jwo:OpenBrowser download_folder_path="{x:Null}" user_data_dir="{x:Null}" Headless="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="&quot;https://jornadarpa.com.br/alunos/desafios/dataextractioncrm/desafios_crm-clientes.html&quot;" WebDriverPath="''" createInstance="True" inBrowser="CHROME" outBrowser="webBot" page_load_strategy="Normal" />
+    <jwe:ExtractDataTable Datatable="dataTable" sap2010:WorkflowViewState.IdRef="ExtractDataTable_1" Lines="0" XPathNext="&quot;/html/body/div[4]/section/div/div/div/div/div/div/div/div[3]/div[2]/div/ul/li[5]/a&quot;" XPathtable="&quot;/html/body/div[4]/section/div/div/div/div/div/div/div/div[2]/div/table&quot;" inBrowser="webBot" />
+    <jpp:Print sap2010:WorkflowViewState.IdRef="Print_1" print="dataTable" />
+    <sads:DebugSymbol.Symbol>dyBDOlxSUEFcYm90Y2l0eVxXZWJTY3JhcFxCb3QueGFtbAQMAxEOAgEBDQUN5gICAQQOBQ7QAgIBAw8FD04CAQI=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="350,174" />
+      <sap2010:ViewStateData Id="ExtractDataTable_1" sap:VirtualizedContainerService.HintSize="350,94" />
+      <sap2010:ViewStateData Id="Print_1" sap:VirtualizedContainerService.HintSize="350,63" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="372,535">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="JornadaRPAStudio.Workflow_1" sap:VirtualizedContainerService.HintSize="412,615" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

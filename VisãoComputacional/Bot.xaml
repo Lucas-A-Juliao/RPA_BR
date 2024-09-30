@@ -1,0 +1,146 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="JornadaRPA.Bot" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="JornadaRPAStudio.Workflow_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:jdo="clr-namespace:JornadaRPA.Desktop.OpenApplication;assembly=JornadaRPA.Desktop"
+ xmlns:jer="clr-namespace:JornadaRPA.Excel.Read_Excel;assembly=JornadaRPA.Excel"
+ xmlns:jif="clr-namespace:JornadaRPA.Image.Find;assembly=JornadaRPA.Image"
+ xmlns:jkt="clr-namespace:JornadaRPA.Keyboard.Type_Into;assembly=JornadaRPA.Keyboard"
+ xmlns:jmc="clr-namespace:JornadaRPA.Mouse.Click;assembly=JornadaRPA.Mouse"
+ xmlns:jpe="clr-namespace:JornadaRPA.Python.Else;assembly=JornadaRPA.Python"
+ xmlns:jpf="clr-namespace:JornadaRPA.Python.ForEach;assembly=JornadaRPA.Python"
+ xmlns:jpi="clr-namespace:JornadaRPA.Python.If;assembly=JornadaRPA.Python"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <jer:Read_Excel sap2010:WorkflowViewState.IdRef="Read_Excel_1" dataList="dataList" dataType="As_List" file_or_path="&quot;C:\Users\HP\Downloads\BankSystem\extract.xlsx&quot;" header="True" instance="excelBot" instanceExcel="True" sheet="None" />
+    <jdo:OpenApplication active_only="{x:Null}" auto_id="{x:Null}" best_match="{x:Null}" class_name="{x:Null}" class_name_re="{x:Null}" control_id="{x:Null}" control_type="{x:Null}" ctrl_index="{x:Null}" enabled_only="{x:Null}" found_index="{x:Null}" framework_id="{x:Null}" handle="{x:Null}" parent="{x:Null}" predicate_func="{x:Null}" process="{x:Null}" selbackend="{x:Null}" title_re="{x:Null}" top_level_only="{x:Null}" visible_only="{x:Null}" sap2010:WorkflowViewState.IdRef="OpenApplication_1" backend="WIN_32" botInstance="deskBot" create_instance="True" path="&quot;C:\Users\HP\Downloads\BankSystem\BankSystem.exe&quot;" timeout="60000" title="&quot;BankSystem - Jornada RPA&quot;" waitingTime="10000" windowFinded="popup_Window" />
+    <jpf:ForEach sap2010:WorkflowViewState.IdRef="ForEach_1" item="item" values="dataList">
+      <jpf:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <Sequence DisplayName="Entrada de dados" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence DisplayName="Verificar se é débito ou crédito" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <jpi:If sap2010:WorkflowViewState.IdRef="If_1" condition="item[0] == &quot;Débito&quot;">
+                <jpi:If.Body>
+                  <ActivityAction x:TypeArguments="x:String">
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <jif:Find sap2010:WorkflowViewState.IdRef="Find_1" InBrowser="deskBot" best="True" element_coord="btnDebito" grayscale="False" height="None" label="&quot;Debito&quot;" matching="0.8" threshold="None" waiting_time="10000" width="None" x="None" y="None" />
+                      <jmc:Click Element="deskBot" sap2010:WorkflowViewState.IdRef="Click_1" button="Left" clicks="One" interval_between_clicks="0" wait_after="300" />
+                    </Sequence>
+                  </ActivityAction>
+                </jpi:If.Body>
+              </jpi:If>
+              <jpe:Else sap2010:WorkflowViewState.IdRef="Else_1">
+                <jpe:Else.Body>
+                  <ActivityAction x:TypeArguments="x:String">
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <jif:Find sap2010:WorkflowViewState.IdRef="Find_2" InBrowser="deskBot" best="True" element_coord="btnCredito" grayscale="False" height="None" label="&quot;Credito&quot;" matching="0.9" threshold="None" waiting_time="10000" width="None" x="None" y="None" />
+                      <jmc:Click Element="deskBot" sap2010:WorkflowViewState.IdRef="Click_2" button="Left" clicks="One" interval_between_clicks="0" wait_after="300" />
+                    </Sequence>
+                  </ActivityAction>
+                </jpe:Else.Body>
+              </jpe:Else>
+            </Sequence>
+            <jif:Find sap2010:WorkflowViewState.IdRef="Find_3" InBrowser="deskBot" best="True" element_coord="campoDescricao" grayscale="False" height="None" label="&quot;Descricao&quot;" matching="0.9" threshold="None" waiting_time="10000" width="None" x="None" y="None" />
+            <jmc:Click Element="deskBot" sap2010:WorkflowViewState.IdRef="Click_3" button="Left" clicks="One" interval_between_clicks="0" wait_after="300" />
+            <jkt:Type_Into sap2010:WorkflowViewState.IdRef="Type_Into_1" element_instance="deskBot" empty_field="True" interval="0" text="item[1]" type="Kb_Type" with_spaces="True" />
+            <jif:Find sap2010:WorkflowViewState.IdRef="Find_7" InBrowser="deskBot" best="True" element_coord="campoValor" grayscale="False" height="None" label="&quot;Valor&quot;" matching="0.9" threshold="None" waiting_time="10000" width="None" x="None" y="None" />
+            <jmc:Click Element="deskBot" sap2010:WorkflowViewState.IdRef="Click_7" button="Left" clicks="One" interval_between_clicks="0" wait_after="300" />
+            <jkt:Type_Into sap2010:WorkflowViewState.IdRef="Type_Into_5" element_instance="deskBot" empty_field="True" interval="0" text="str(item[2])" type="Kb_Type" with_spaces="True" />
+            <jif:Find sap2010:WorkflowViewState.IdRef="Find_8" InBrowser="deskBot" best="True" element_coord="campoData" grayscale="False" height="None" label="&quot;Data&quot;" matching="0.9" threshold="None" waiting_time="10000" width="None" x="None" y="None" />
+            <jmc:Click Element="deskBot" sap2010:WorkflowViewState.IdRef="Click_8" button="Left" clicks="One" interval_between_clicks="0" wait_after="300" />
+            <jkt:Type_Into sap2010:WorkflowViewState.IdRef="Type_Into_6" element_instance="deskBot" empty_field="True" interval="0" text="item[3].strftime(&quot;%d/%m/%Y&quot;)" type="Kb_Type" with_spaces="True" />
+            <jif:Find sap2010:WorkflowViewState.IdRef="Find_9" InBrowser="deskBot" best="True" element_coord="btnConfirmar" grayscale="False" height="None" label="&quot;Confirmar&quot;" matching="0.9" threshold="None" waiting_time="10000" width="None" x="None" y="None" />
+            <jmc:Click Element="deskBot" sap2010:WorkflowViewState.IdRef="Click_11" button="Left" clicks="One" interval_between_clicks="0" wait_after="300" />
+          </Sequence>
+        </ActivityAction>
+      </jpf:ForEach.Body>
+    </jpf:ForEach>
+    <sads:DebugSymbol.Symbol>dytDOlxSUEFcYm90Y2l0eVxWaXPDo29Db21wdXRhY2lvbmFsXEJvdC54YW1sBBEDPg4CAQESBRL6AQIBBBMFE+UFAgEDFAU8EwIBAg==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Read_Excel_1" sap:VirtualizedContainerService.HintSize="494,149" />
+      <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="494,175" />
+      <sap2010:ViewStateData Id="Find_1" sap:VirtualizedContainerService.HintSize="200,156.8" />
+      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="200,82.4" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="222.4,404">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="404,80">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Find_2" sap:VirtualizedContainerService.HintSize="200,156.8" />
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="200,82.4" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="222.4,404">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Else_1" sap:VirtualizedContainerService.HintSize="404,68.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="350,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Find_3" sap:VirtualizedContainerService.HintSize="350,155" />
+      <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="350,81" />
+      <sap2010:ViewStateData Id="Type_Into_1" sap:VirtualizedContainerService.HintSize="350,123" />
+      <sap2010:ViewStateData Id="Find_7" sap:VirtualizedContainerService.HintSize="350,155" />
+      <sap2010:ViewStateData Id="Click_7" sap:VirtualizedContainerService.HintSize="350,81" />
+      <sap2010:ViewStateData Id="Type_Into_5" sap:VirtualizedContainerService.HintSize="350,123" />
+      <sap2010:ViewStateData Id="Find_8" sap:VirtualizedContainerService.HintSize="350,155" />
+      <sap2010:ViewStateData Id="Click_8" sap:VirtualizedContainerService.HintSize="350,81" />
+      <sap2010:ViewStateData Id="Type_Into_6" sap:VirtualizedContainerService.HintSize="350,123" />
+      <sap2010:ViewStateData Id="Find_9" sap:VirtualizedContainerService.HintSize="350,155" />
+      <sap2010:ViewStateData Id="Click_11" sap:VirtualizedContainerService.HintSize="350,81" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="372,2140">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach_1" sap:VirtualizedContainerService.HintSize="494,2246">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="516,2774">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="JornadaRPAStudio.Workflow_1" sap:VirtualizedContainerService.HintSize="556,2854" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
